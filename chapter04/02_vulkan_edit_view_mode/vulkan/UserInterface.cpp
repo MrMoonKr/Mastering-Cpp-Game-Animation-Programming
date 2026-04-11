@@ -63,8 +63,8 @@ bool UserInterface::init(VkRenderData& renderData) {
   imguiIinitInfo.DescriptorPool = renderData.rdImguiDescriptorPool;
   imguiIinitInfo.MinImageCount = 2;
   imguiIinitInfo.ImageCount = static_cast<uint32_t>(renderData.rdSwapchainImages.size());
-  imguiIinitInfo.MSAASamples = VK_SAMPLE_COUNT_1_BIT;
-  imguiIinitInfo.RenderPass = renderData.rdImGuiRenderpass;
+  imguiIinitInfo.PipelineInfoMain.MSAASamples = VK_SAMPLE_COUNT_1_BIT;
+  imguiIinitInfo.PipelineInfoMain.RenderPass = renderData.rdImGuiRenderpass;
 
   if (!ImGui_ImplVulkan_Init(&imguiIinitInfo)) {
     Logger::log(1, "%s error: could not init ImGui for Vulkan \n", __FUNCTION__);
@@ -441,7 +441,7 @@ void UserInterface::createFrame(VkRenderData &renderData, ModelAndInstanceData &
       /* cheating a bit to get buttons more to the center */
       ImGui::Indent();
       ImGui::Indent();
-      if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Enter))) {
+      if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGuiKey_Enter)) {
         modInstData.miModelDeleteCallbackFunction(modInstData.miModelList.at(modInstData.miSelectedModel)->getModelFileName().c_str());
 
         /* decrement selected model index to point to model that is in list before the deleted one */
@@ -463,7 +463,7 @@ void UserInterface::createFrame(VkRenderData &renderData, ModelAndInstanceData &
         ImGui::CloseCurrentPopup();
       }
       ImGui::SameLine();
-      if (ImGui::Button("Cancel") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Escape))) {
+      if (ImGui::Button("Cancel") || ImGui::IsKeyPressed(ImGuiKey_Escape)) {
         ImGui::CloseCurrentPopup();
       }
       ImGui::EndPopup();

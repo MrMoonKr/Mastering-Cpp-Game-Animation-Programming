@@ -697,6 +697,10 @@ void OGLRenderer::setSize(unsigned int width, unsigned int height) {
   glViewport(0, 0, width, height);
 
   Logger::log(1, "%s: resized window to %dx%d\n", __FUNCTION__, width, height);
+
+  float xScale, yScale;
+  glfwGetWindowContentScale(mRenderData.rdWindow, &xScale, &yScale);
+  Logger::log(1, "%s: window scale is %.2f (x) / %.2f (y) \n", __FUNCTION__, xScale, yScale);
 }
 
 void OGLRenderer::setModeInWindowTitle() {
@@ -1262,7 +1266,9 @@ bool OGLRenderer::draw(float deltaTime) {
       glFinish();
 
       /* inverted Y */
-      float selectedInstanceId = mFramebuffer.readPixelFromPos(mMouseXPos, (mRenderData.rdHeight - mMouseYPos - 1));
+      float xScale, yScale;
+      glfwGetWindowContentScale(mRenderData.rdWindow, &xScale, &yScale);
+      float selectedInstanceId = mFramebuffer.readPixelFromPos(mMouseXPos * xScale, (mRenderData.rdHeight - mMouseYPos * yScale - 1));
 
       if (selectedInstanceId >= 0.0f) {
         mModelInstData.miSelectedInstance = static_cast<int>(selectedInstanceId);
