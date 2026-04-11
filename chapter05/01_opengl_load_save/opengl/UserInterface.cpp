@@ -126,13 +126,13 @@ void UserInterface::createFrame(OGLRenderData &renderData, ModelAndInstanceData 
 
     /* cheating a bit to get buttons more to the center */
     ImGui::Indent();
-    if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Enter))) {
+    if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGuiKey_Enter)) {
       renderData.rdAppExitCallbackFunction();
       ImGui::CloseCurrentPopup();
     }
 
     ImGui::SameLine();
-    if (ImGui::Button("Cancel") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Escape))) {
+    if (ImGui::Button("Cancel") || ImGui::IsKeyPressed(ImGuiKey_Escape)) {
       renderData.rdRequestApplicationExit = false;
       ImGui::CloseCurrentPopup();
     }
@@ -176,7 +176,7 @@ void UserInterface::createFrame(OGLRenderData &renderData, ModelAndInstanceData 
     ImGui::Indent();
     ImGui::Indent();
     ImGui::Indent();
-    if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Enter))) {
+    if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGuiKey_Enter)) {
       ImGui::CloseCurrentPopup();
     }
     ImGui::EndPopup();
@@ -217,7 +217,7 @@ void UserInterface::createFrame(OGLRenderData &renderData, ModelAndInstanceData 
     ImGui::Indent();
     ImGui::Indent();
     ImGui::Indent();
-    if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Enter))) {
+    if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGuiKey_Enter)) {
       ImGui::CloseCurrentPopup();
     }
     ImGui::EndPopup();
@@ -518,13 +518,13 @@ void UserInterface::createFrame(OGLRenderData &renderData, ModelAndInstanceData 
       /* cheating a bit to get buttons more to the center */
       ImGui::Indent();
       ImGui::Indent();
-      if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Enter))) {
+      if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGuiKey_Enter)) {
         modInstData.miModelDeleteCallbackFunction(modInstData.miModelList.at(modInstData.miSelectedModel)->getModelFileName().c_str(), true);
 
         ImGui::CloseCurrentPopup();
       }
       ImGui::SameLine();
-      if (ImGui::Button("Cancel") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Escape))) {
+      if (ImGui::Button("Cancel") || ImGui::IsKeyPressed(ImGuiKey_Escape)) {
         ImGui::CloseCurrentPopup();
       }
       ImGui::EndPopup();

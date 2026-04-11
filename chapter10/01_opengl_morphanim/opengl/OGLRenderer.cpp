@@ -35,6 +35,9 @@ bool OGLRenderer::init(unsigned int width, unsigned int height) {
   mRenderData.rdWidth = width;
   mRenderData.rdHeight = height;
 
+  mRenderData.rdWindowWidth = width;
+  mRenderData.rdWindowHeight = height;
+
   /* initialize GLAD */
   if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
     Logger::log(1, "%s error: failed to initialize GLAD\n", __FUNCTION__);
@@ -1272,10 +1275,21 @@ void OGLRenderer::setSize(unsigned int width, unsigned int height) {
   mRenderData.rdWidth = width;
   mRenderData.rdHeight = height;
 
+  int windowWidth = 0;
+  int windowHeight = 0;
+  // get window size for UI
+  glfwGetWindowSize(mRenderData.rdWindow, &windowWidth, &windowHeight);
+  mRenderData.rdWindowWidth = windowWidth;
+  mRenderData.rdWindowHeight = windowHeight;
+
   mFramebuffer.resize(width, height);
   glViewport(0, 0, width, height);
 
   Logger::log(1, "%s: resized window to %dx%d\n", __FUNCTION__, width, height);
+
+  float xScale, yScale;
+  glfwGetWindowContentScale(mRenderData.rdWindow, &xScale, &yScale);
+  Logger::log(1, "%s: window scale is %.2f (x) / %.2f (y) \n", __FUNCTION__, xScale, yScale);
 }
 
 void OGLRenderer::setConfigDirtyFlag(bool flag) {
@@ -3042,7 +3056,9 @@ bool OGLRenderer::draw(float deltaTime) {
       glFinish();
 
       /* inverted Y */
-      float selectedInstanceId = mFramebuffer.readPixelFromPos(mMouseXPos, (mRenderData.rdHeight - mMouseYPos - 1));
+      float xScale, yScale;
+      glfwGetWindowContentScale(mRenderData.rdWindow, &xScale, &yScale);
+      float selectedInstanceId = mFramebuffer.readPixelFromPos(mMouseXPos * xScale, (mRenderData.rdHeight - mMouseYPos * yScale - 1));
 
       if (selectedInstanceId >= 0.0f) {
         mModelInstCamData.micSelectedInstance = static_cast<int>(selectedInstanceId);

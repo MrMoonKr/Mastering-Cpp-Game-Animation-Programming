@@ -191,7 +191,7 @@ void UserInterface::createSettingsWindow(OGLRenderData& renderData, ModelInstanc
 
     /* cheating a bit to get buttons more to the center */
     ImGui::Indent();
-    if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Enter))) {
+    if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGuiKey_Enter)) {
       if (modInstCamData.micGetConfigDirtyCallbackFunction()) {
         openUnsavedChangesExitDialog = true;
         renderData.rdRequestApplicationExit = false;
@@ -202,7 +202,7 @@ void UserInterface::createSettingsWindow(OGLRenderData& renderData, ModelInstanc
     }
 
     ImGui::SameLine();
-    if (ImGui::Button("Cancel") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Escape))) {
+    if (ImGui::Button("Cancel") || ImGui::IsKeyPressed(ImGuiKey_Escape)) {
       renderData.rdRequestApplicationExit = false;
       ImGui::CloseCurrentPopup();
     }
@@ -221,13 +221,13 @@ void UserInterface::createSettingsWindow(OGLRenderData& renderData, ModelInstanc
 
     /* cheating a bit to get buttons more to the center */
     ImGui::Indent();
-    if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Enter))) {
+    if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGuiKey_Enter)) {
       renderData.rdAppExitCallbackFunction();
       ImGui::CloseCurrentPopup();
     }
 
     ImGui::SameLine();
-    if (ImGui::Button("Cancel") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Escape))) {
+    if (ImGui::Button("Cancel") || ImGui::IsKeyPressed(ImGuiKey_Escape)) {
       renderData.rdRequestApplicationExit = false;
       ImGui::CloseCurrentPopup();
     }
@@ -255,13 +255,13 @@ void UserInterface::createSettingsWindow(OGLRenderData& renderData, ModelInstanc
 
     /* cheating a bit to get buttons more to the center */
     ImGui::Indent();
-    if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Enter))) {
+    if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGuiKey_Enter)) {
       modInstCamData.micNewConfigCallbackFunction();
       ImGui::CloseCurrentPopup();
     }
 
     ImGui::SameLine();
-    if (ImGui::Button("Cancel") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Escape))) {
+    if (ImGui::Button("Cancel") || ImGui::IsKeyPressed(ImGuiKey_Escape)) {
       ImGui::CloseCurrentPopup();
     }
     ImGui::EndPopup();
@@ -306,14 +306,14 @@ void UserInterface::createSettingsWindow(OGLRenderData& renderData, ModelInstanc
 
     /* cheating a bit to get buttons more to the center */
     ImGui::Indent();
-    if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Enter))) {
+    if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGuiKey_Enter)) {
       std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
       loadSuccessful = modInstCamData.micLoadConfigCallbackFunction(filePathName);
       ImGui::CloseCurrentPopup();
     }
 
     ImGui::SameLine();
-    if (ImGui::Button("Cancel") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Escape))) {
+    if (ImGui::Button("Cancel") || ImGui::IsKeyPressed(ImGuiKey_Escape)) {
       ImGui::CloseCurrentPopup();
     }
     ImGui::EndPopup();
@@ -333,7 +333,7 @@ void UserInterface::createSettingsWindow(OGLRenderData& renderData, ModelInstanc
     ImGui::Indent();
     ImGui::Indent();
     ImGui::Indent();
-    if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Enter))) {
+    if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGuiKey_Enter)) {
       ImGui::CloseCurrentPopup();
     }
     ImGui::EndPopup();
@@ -378,7 +378,7 @@ void UserInterface::createSettingsWindow(OGLRenderData& renderData, ModelInstanc
     ImGui::Indent();
     ImGui::Indent();
     ImGui::Indent();
-    if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Enter))) {
+    if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGuiKey_Enter)) {
       ImGui::CloseCurrentPopup();
     }
     ImGui::EndPopup();
@@ -1103,13 +1103,13 @@ void UserInterface::createSettingsWindow(OGLRenderData& renderData, ModelInstanc
       ImGui::Indent();
       ImGui::Indent();
       ImGui::Indent();
-      if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Enter))) {
+      if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGuiKey_Enter)) {
         modInstCamData.micCameraDeleteCallbackFunction();
         numCameras = modInstCamData.micCameras.size() - 1;
         ImGui::CloseCurrentPopup();
       }
       ImGui::SameLine();
-      if (ImGui::Button("Cancel") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Escape))) {
+      if (ImGui::Button("Cancel") || ImGui::IsKeyPressed(ImGuiKey_Escape)) {
         ImGui::CloseCurrentPopup();
       }
       ImGui::EndPopup();
@@ -1157,7 +1157,7 @@ void UserInterface::createSettingsWindow(OGLRenderData& renderData, ModelInstanc
       ImGui::Indent();
       ImGui::Indent();
       ImGui::Indent();
-      if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Enter))) {
+      if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGuiKey_Enter)) {
         ImGui::CloseCurrentPopup();
       }
       ImGui::EndPopup();
@@ -1575,13 +1575,13 @@ void UserInterface::createSettingsWindow(OGLRenderData& renderData, ModelInstanc
       /* cheating a bit to get buttons more to the center */
       ImGui::Indent();
       ImGui::Indent();
-      if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Enter))) {
+      if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGuiKey_Enter)) {
         modInstCamData.micModelDeleteCallbackFunction(modInstCamData.micModelList.at(modInstCamData.micSelectedModel)->getModelFileName(), true);
 
         ImGui::CloseCurrentPopup();
       }
       ImGui::SameLine();
-      if (ImGui::Button("Cancel") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Escape))) {
+      if (ImGui::Button("Cancel") || ImGui::IsKeyPressed(ImGuiKey_Escape)) {
         ImGui::CloseCurrentPopup();
       }
       ImGui::EndPopup();
@@ -1731,13 +1731,13 @@ void UserInterface::createSettingsWindow(OGLRenderData& renderData, ModelInstanc
       /* cheating a bit to get buttons more to the center */
       ImGui::Indent();
       ImGui::Indent();
-      if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Enter))) {
+      if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGuiKey_Enter)) {
         modInstCamData.micLevelDeleteCallbackFunction(selectedLevelName);
         settings = modInstCamData.micLevels.at(modInstCamData.micSelectedLevel)->getLevelSettings();
         ImGui::CloseCurrentPopup();
       }
       ImGui::SameLine();
-      if (ImGui::Button("Cancel") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Escape))) {
+      if (ImGui::Button("Cancel") || ImGui::IsKeyPressed(ImGuiKey_Escape)) {
         ImGui::CloseCurrentPopup();
       }
       ImGui::EndPopup();
@@ -3155,7 +3155,6 @@ void UserInterface::createSettingsWindow(OGLRenderData& renderData, ModelInstanc
       }
       ImGui::PopItemWidth();
 
-      ImGui::PopItemWidth();
       ImGui::SameLine();
 
       if (ImGui::Button("Set##Target")) {
@@ -3242,7 +3241,7 @@ void UserInterface::createSettingsWindow(OGLRenderData& renderData, ModelInstanc
       ImGui::Indent();
       ImGui::Indent();
       ImGui::Indent();
-      if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Enter))) {
+      if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGuiKey_Enter)) {
         ImGui::CloseCurrentPopup();
       }
       ImGui::EndPopup();
@@ -3296,14 +3295,14 @@ void UserInterface::createSettingsWindow(OGLRenderData& renderData, ModelInstanc
 
       /* cheating a bit to get buttons more to the center */
       ImGui::Indent();
-      if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Enter))) {
+      if (ImGui::Button("OK") || ImGui::IsKeyPressed(ImGuiKey_Enter)) {
         modInstCamData.micBehaviorData.erase(mTreeToDelete);
         modInstCamData.micPostNodeTreeDelBehaviorCallbackFunction(mTreeToDelete);
         ImGui::CloseCurrentPopup();
       }
 
       ImGui::SameLine();
-      if (ImGui::Button("Cancel") || ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Escape))) {
+      if (ImGui::Button("Cancel") || ImGui::IsKeyPressed(ImGuiKey_Escape)) {
         ImGui::CloseCurrentPopup();
       }
       ImGui::EndPopup();
@@ -3641,8 +3640,8 @@ void UserInterface::createStatusBar(OGLRenderData& renderData, ModelInstanceCamD
     return;
   }
 
-  ImGui::SetNextWindowPos(ImVec2(0.0f,  renderData.rdHeight - 35.0f), ImGuiCond_Always);
-  ImGui::SetNextWindowSize(ImVec2(renderData.rdWidth, 35.0f));
+  ImGui::SetNextWindowPos(ImVec2(0.0f,  renderData.rdWindowHeight - 35.0f), ImGuiCond_Always);
+  ImGui::SetNextWindowSize(ImVec2(renderData.rdWindowWidth, 35.0f));
   ImGui::SetNextWindowBgAlpha(0.5f);
 
   if (mCurrentInstance != modInstCamData.micAssimpInstances.at(modInstCamData.micSelectedInstance)) {
