@@ -1379,7 +1379,6 @@ bool VkRenderer::createSwapchain() {
   surfaceFormat.colorSpace = VK_COLOR_SPACE_SRGB_NONLINEAR_KHR;
   surfaceFormat.format = VK_FORMAT_B8G8R8A8_UNORM;
 
-
   int frameBufferWidth = 0;
   int frameBufferHeight = 0;
   // get framebuffer size instead of window size in case some scaling has been applied (Wayland)
@@ -2514,9 +2513,8 @@ bool VkRenderer::draw(float deltaTime) {
 
   /* calculate the size of the node matrix buffer over all animated instances */
   size_t boneMatrixBufferSize = 0;
-  for (const auto& modelType : mModelInstData.miAssimpInstancesPerModel) {
-    size_t numberOfInstances = modelType.second.size();
-    std::shared_ptr<AssimpModel> model = modelType.second.at(0)->getModel();
+  for (const auto& model : mModelInstData.miModelList) {
+    size_t numberOfInstances = mModelInstData.miAssimpInstancesPerModel[model->getModelFileName()].size();
     if (numberOfInstances > 0 && model->getTriangleCount() > 0) {
 
       /* animated models */
