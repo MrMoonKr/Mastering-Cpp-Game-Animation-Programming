@@ -88,7 +88,7 @@ FetchContent_Declare(
   imnodes
   GIT_REPOSITORY https://github.com/Nelarius/imnodes
   GIT_TAG        b2ec254
-  GIT_SHALLOW 1
+  GIT_SHALLOW 0
 )
 
 get_property(current_compile_options DIRECTORY PROPERTY COMPILE_OPTIONS)
